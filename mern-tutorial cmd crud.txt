@@ -1,0 +1,91 @@
+npm init
+npm install express mongoose dotenv colors
+npm install --save-dev nodemon
+
+
+========server / backend part
+
+bara folder backend 3ndk fill .env li fih les info priver
+ou .gitignore li ki ignoie les fill li ma5asshomch i t inportaw
+folder node_modules, fill package.json , fill package-lock.json
+folder backend
+	>> server.js
+		app express, 
+		kidir app.use() l middlewares		
+		--kirbat l controller b routes
+		link bin server ou l port ou kicha4l server
+	>> routes folder
+		fih fill ta3 aye routes ta3 controller,
+		ktrbt l url b collection
+	>> controller folder	
+		fih aye controller ta3 aye coolection li homa les 4 fcts get, post, put and delete
+		kidir logik ta3 crud m3a DB
+	>> middleware folder 
+		fil Errormiddleware.js ta3 les err
+		ou n9adro ndiro fih aye middleware a5ra
+	>> config folder
+		db.js : lihia connection ta3 db kijib url mn .env
+	>> model folder
+		fih les schema
+	➕mn b3d ma cncrier lschema ou kn3ayt 3liha f controller nt9i ou n3awd ncha3l server 
+		ktzad rassha f7alt makantch ou t3ayt 3la model f controlles
+
+
+-------Commands bach tbdà server
+Development mode (with nodemon)
+npm run dev
+
+Production mode (node server.js)
+npm start
+
+
+---had commande mn b3d makdir Errormiddleware f kola fct async 9aditi lakan chi err 
+	kisayfto nichan l Errormiddleware  bla mtb9a t7taj kola mara dir try catsh
+
+npm i express-async-handler
+
+
+-----Optional (if you want frontend React)
+npx create-react-app frontend
+cd frontend
+npm start
+
+
+
+========Authentication 
+	1. create usermodel.js	:	kt7ot schema ta3 l user
+	
+	2. mn be3d kndir like mabin user schema ou data schema li howa had script
+		    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User", // reference to User model
+    },
+	3. 4t3ayt f server 3la router ta3 had user ou aye data jdida ba4i dirha
+	
+	4. user.js fil kt9ad fih les route li kihadro mabin rout ta3 server ou les fct ta3 crud
+
+	5. userroute.js		: aye route.js jdida drt nmchi ncall it f server 
+
+	6. userC.js		: 4n7ot tlata fct ta3 crud jouj POST for register and login
+				  and one get for take the data
+				  ktrja3 t9ad lihoum des route f user.js
+	crier 4a wa7d ou test b postman
+	
+	--- partie ta3 register fct 
+		bach nbdawha 5ass ikon password mchafr ou bach ikon mchafr 5ass wa7d package
+			>> npm i bcryptjs
+
+		ou bach nt3anlo m3a JWT = JSON Web Token li kt5dm b consept ta3 check les info mn user bach t3tih cookise
+			>> npm i jsonwebtoken
+
+jwt.sign
+create token
+autorisation
+
+
+fikrat abdo 3la lmodel : daba matalan 3la unik treu t9dar dir fiha objet dir fih message 3la les err
+
+
+
+=
