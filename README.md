@@ -1,7 +1,13 @@
 # Averix
+# 🧩 مشروع MERN Stack كامل
+
+## ⚙️ التثبيت الأولي
+
+```bash
 npm init
 npm install express mongoose dotenv colors
 npm install --save-dev nodemon
+
 
 
 ========server / backend part
@@ -9,27 +15,26 @@ npm install --save-dev nodemon
 bara folder backend 3ndk fill .env li fih les info priver
 ou .gitignore li ki ignoie les fill li ma5asshomch i t inportaw
 folder node_modules, fill package.json , fill package-lock.json
-folder backend
-	>> server.js
-		app express, 
-		kidir app.use() l middlewares		
-		--kirbat l controller b routes
-		link bin server ou l port ou kicha4l server
-	>> routes folder
-		fih fill ta3 aye routes ta3 controller,
-		ktrbt l url b collection
-	>> controller folder	
-		fih aye controller ta3 aye coolection li homa les 4 fcts get, post, put and delete
-		kidir logik ta3 crud m3a DB
-	>> middleware folder 
-		fil Errormiddleware.js ta3 les err
-		ou n9adro ndiro fih aye middleware a5ra
-	>> config folder
-		db.js : lihia connection ta3 db kijib url mn .env
-	>> model folder
-		fih les schema
-	➕mn b3d ma cncrier lschema ou kn3ayt 3liha f controller nt9i ou n3awd ncha3l server 
-		ktzad rassha f7alt makantch ou t3ayt 3la model f controlles
+
+
+
+backend/
+│
+├── server.js
+│   ├─ إنشاء تطبيق express  (app express)
+│   ├─ استخدام middlewares بـ app.use() (--kirbat l controller b routes)
+│   ├─ ربط controllers بـ routes    (link bin server ou l port)
+│   └─ تشغيل السيرفر على port محدد
+│
+├── routes/          → يحتوي على جميع ملفات routes (    fih fill ta3 aye routes ta3 controller,	ktrbt l url b collection)
+├── controllers/     → فيه الدوال (get, post, put, delete)
+├── middleware/      → ملف الأخطاء + middleware الحماية+  aye middleware a5ra tae err
+├── config/          → الاتصال بقاعدة البيانات db.js + db.js : lihia connection ta3 db kijib url mn .env
+├── models/          → يحتوي على جميع schemas
+├                    →   mn b3d ma cncrier lschema ou kn3ayt 3liha f controller nt9i ou n3awd ncha3l server ktzad rassha f7alt makantch ou t3ayt 3la model f controlles
+├── .env             → معلومات سرّية (MONGO_URI, JWT_SECRET ...)
+└── .gitignore       → تجاهل الملفات مثل node_modules و .env
+
 
 
 -------Commands bach tbdà server
@@ -54,14 +59,14 @@ npm start
 
 
 ========Authentication 
+
 	1. create usermodel.js	:	kt7ot schema ta3 l user
 	
 	2. mn be3d kndir like mabin user schema ou data schema li howa had script
 		    user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: "User", // reference to User model
-    },
+        ref: "User", // reference to User model },
 	3. 4t3ayt f server 3la router ta3 had user ou aye data jdida ba4i dirha
 	
 	4. user.js fil kt9ad fih les route li kihadro mabin rout ta3 server ou les fct ta3 crud
@@ -80,32 +85,33 @@ npm start
 		ou bach nt3anlo m3a JWT = JSON Web Token li kt5dm b consept ta3 check les info mn user bach t3tih cookise
 			>> npm i jsonwebtoken
 		
-jwt.sign
-create token
-autorisation
-		kikono les fct ta3 register , login , getdata, f had setuation 3ndi 3 fct loginUser, registerUser, getMe 
+-- jwt.sign
+-- create token
+-- autorisation
+
+		--kikono les fct ta3 register , login , getdata, f had setuation 3ndi 3 fct loginUser, registerUser, getMe 
 		ou w7da rab3a ta3 generateToken hia li4tb9a kt3ti l user time ib9a mkonectifih like 7d or 30d
 
-		user fih jouj type ya 3adi ta3 user ou li fih role bach admin i tkonecta mn nafss lblass ou fhad l7ala knzido
+		--user fih jouj type ya 3adi ta3 user ou li fih role bach admin i tkonecta mn nafss lblass ou fhad l7ala knzido
 		role f schema , startf login ou startf register ta3 role
 
---autontification ta3 les routes using middelware , hadi kt5dm meli knsayfto req to route li fih had autonthification 
-5adi it check te tocken kindiro sahla , dir register , dir login copy tocken sir link ta3 /me dir Autorization > type: Bearer Tocken 
-ou 7ot Tocken li copit f input ou dir SEND 5dm mzn 7ayd 7arf meno ou chofo wach ma4ay5dmch bach tester err
+        --autontification ta3 les routes using middelware , hadi kt5dm meli knsayfto req to route li fih had autonthification 
+        5adi it check te tocken kindiro sahla , dir register , dir login copy tocken sir link ta3 /me dir Autorization > type: Bearer Tocken 
+        ou 7ot Tocken li copit f input ou dir SEND 5dm mzn 7ayd 7arf meno ou chofo wach ma4ay5dmch bach tester err
 
-39:30
--- mn loraha kn protect the crud for for table li 4ayrtabto b user , 3la 7sab bach iweli ijib data 3la 7sssab tocken ta3 dak user
-	for exmple 3ndi Goals ou users mn b3d ma9adir protect ou dertha f getme li ktjib data ta3 dak user 3la 7sab tocken ta3o 
-	4n protect the Goals bach meli n7ot tocken ijib Goals ta3 dik tocken
+        39:30
+        -- mn loraha kn protect the crud for for table li 4ayrtabto b user , 3la 7sab bach iweli ijib data 3la 7sssab tocken ta3 dak user
+            for exmple 3ndi Goals ou users mn b3d ma9adir protect ou dertha f getme li ktjib data ta3 dak user 3la 7sab tocken ta3o 
+            4n protect the Goals bach meli n7ot tocken ijib Goals ta3 dik tocken
 
--- mn b3d fach kn7ot lockal f postman ta3 goals kital3 lia err 7itach maatih 7ta tocken ta3 chi user , ou meli kn3tih tocken kijib data
+        -- mn b3d fach kn7ot lockal f postman ta3 goals kital3 lia err 7itach maatih 7ta tocken ta3 chi user , ou meli kn3tih tocken kijib data
 
--- ou had goals 3ndha crud ta3ha , oulora had protect li dert 4adi mib9ach idoz lama3titihch tocken , 
-ou mn loraha f aye fct 4ayweli 5assk id ta3 user li mrtabt bdik fct oula makanch fct ma4at5dmch ha syntaxe ' user : req.user.id '
+        -- ou had goals 3ndha crud ta3ha , oulora had protect li dert 4adi mib9ach idoz lama3titihch tocken , 
+        ou mn loraha f aye fct 4ayweli 5assk id ta3 user li mrtabt bdik fct oula makanch fct ma4at5dmch ha syntaxe ' user : req.user.id '
 
--- mn loraha 5assk bach t5adm update ou selete check l user mazal 7itach momkin tocken ikon mais user data tkon delet 
-	ou check ta3 id user li da5l mn3a id user li f data li t5aznt
-	hadchi bach kola user i update just f data ta3o 
+        -- mn loraha 5assk bach t5adm update ou selete check l user mazal 7itach momkin tocken ikon mais user data tkon delet 
+            ou check ta3 id user li da5l mn3a id user li f data li t5aznt
+            hadchi bach kola user i update just f data ta3o 
 
 
 
