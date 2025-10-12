@@ -114,3 +114,102 @@ npm start
         ou check ta3 id user li da5l mn3a id user li f data li t5aznt
         hadchi bach kola user i update just f data ta3o 
 
+### ----------FrontEnd Part
+
+## --start b redux  m3a redux for salassa ou kolchi ikon f blassa w7da
+
+    - redux devTools extension in the broser
+    ## had cmd for create react app and install redux tools and redux toolkit
+    - npx create-react-app frontend --template redux     ❗❗ ila 3ta err ta3 desinstall createreact ou 3wd insstallih 
+    -                                                       dir had cmd =  npx create-react-app@latest frontend --template redux  
+    - 4aliban 7ta had tari9a ma4at5dmch so ach ndiro
+    /*
+
+    1️⃣ احذف كل node_modules من الجذر ومن الواجهة:
+        rmdir /s /q node_modules
+        rmdir /s /q frontend\node_modules
+        del package-lock.json
+        del frontend\package-lock.json
+
+    2️⃣ ثبّت الباقات فقط فـ frontend (باش تبقى React محصورة تما):
+        cd frontend
+        npm install react@18.3.1 react-dom@18.3.1   /// 4aytbdl 3la 7ssab les version jdad
+        npm install @reduxjs/toolkit@1.9.7 react-redux@8.1.3        /// 4aytbdl 3la 7sab les version jdadnpm
+        npm install
+
+    3️⃣ ارجع خطوة للجذر وثبّت غير ديال السيرفر (ماشي React):
+        cd ..
+        npm install express mongoose dotenv colors nodemon
+
+        run server daba mn project b npm run client 4ay5dm
+    */
+
+
+    /*
+    🧹 
+        1️⃣ نظّف المشروع كامل
+
+        من جذر المشروع (فين كاين backend و frontend):
+
+        rmdir /s /q node_modules
+        rmdir /s /q frontend\node_modules
+        del package-lock.json
+        del frontend\package-lock.json
+        npm cache clean --force
+
+        ⚙️ 2️⃣ ثبت الباك فقط للـ backend
+        cd backend
+        npm install
+        cd ..
+
+        🧩 3️⃣ ثبت الواجهة فقط داخل frontend
+        cd frontend
+        npm install react@18.3.1 react-dom@18.3.1
+        npm install @reduxjs/toolkit@1.9.7 react-redux@8.1.3
+        npm install
+
+        🔍 4️⃣ تأكد من أن React نسخة وحدة فقط
+        npm list react
+
+
+        خاص يطلع بحال:
+
+        frontend@0.1.0
+        └── react@18.3.1
+
+
+        وما يكون حتى react آخر خارج frontend.
+     */
+    
+    ## run the fontend
+    - bach n run front 4nmchi f lwl l package.json ta3 backend ou n7ot fih had cript f scripts part  
+    - => ,"client":"npm start --prefix frontend" 
+    -   i9dar i3tik err mn b3d run ta3 redux toolkit 
+    
+
+    ## n9ado lforder 
+    - msa7 app.css ou logo , msa7 cntent li f app.js ou dir fct fiha jst h1 Hello world, msa7 dakchi li f Features
+
+    ## create fct
+    - create folder named pages , tree fils jsx dashbord,register and login
+
+    ## daba 5assna routers bach n5dmo ou bach ndirohom haka
+    - cd frontend
+    - npm install react-router-dom
+
+    ## start in the frontend
+    - create the folcer page , create tree fils jsx , dashbord, login and register
+    - f app.js li 4aykon fill ta3 les routes import the fills and that package  => import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+    - n7ote the routes
+    - daha ncreate component folder fih Header fil jsx for the header
+    - install f front icons package => npm i react-icons
+    - k7ot Header navbar li hia li bach tna9l mal mabin had les routes b 5assiat Link mn react-rout-dom 
+    - daba 4an5dmo 3la autontification front 9bl mn jibo data bach tji data ta3 kola wa7d mkonecte machi kochi
+    - ncreate the formulaire ta3 register ou login 
+    - useState , useEffect , submit and onchange fcts ta3 la form and the inputs 
+    - ga3 dakchi kayne f Register page b les cammante line ou ga3 lifihom ----1--- homa li daro 7ta daba
+    - mn lora hadchi 4atbda 5dma b redux
+
+    ## Redux part
+    - push  that part from the project in git
+    -       npm
