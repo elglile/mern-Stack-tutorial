@@ -12,8 +12,8 @@ const { errorHandler } = require("./middleware/Errormiddleware")
 // ki nload variables mn .env
 dotenv.config({ path: "./.env" })
 
-// ki nحدد port mn .env أو 5000 إيلا ما موجود
-const _PORT = process.env.PORT || 5000
+// ki nحدد port mn .env أو 9001 إيلا ما موجود
+const _PORT = process.env.PORT || 9001
 
 // had start l'connection m3a database
 connect()
