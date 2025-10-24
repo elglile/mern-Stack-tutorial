@@ -31,6 +31,7 @@ app.use('/api/users',require('./routes/user'))
 
 // serve frontend f production mode
 if(process.env.NODE_ENV === 'production'){
+    const __dirnameStatic = path.resolve(); 
     app.use(express.static(path.join(__dirname, '../frontend/build')))
     app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build/index.html'))
