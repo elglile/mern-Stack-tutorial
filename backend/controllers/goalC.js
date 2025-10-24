@@ -43,7 +43,7 @@ const setGoal =asyncHandler(  async (req, res) => {
 //@access Private
 const updateGoal =asyncHandler(  async (req, res) => {
     // had star katjib goal mn database 3la hsab id li f url
-    const goal = await Goal.findById(req.params.id)
+    const goal = await Goal.findById(req.user.id)
     // had l if katchecki ila ma kaynash goal b hadak id
     if(!goal){
         res.status(400)
@@ -51,14 +51,15 @@ const updateGoal =asyncHandler(  async (req, res) => {
     }
 
     // ---------- hnaya bach meli tb4i dir update f goal t7add bach mtbdlch f goal ta3 user a5or 
-        const user = await User.findById(req.user.id)
+        // const user = await User.findById(req.user.id)
+
         // check for user
-        if (!user){
+        if (!req.user){
             res.status(401)
             throw new Error ('User not found')
         }
         // make sure the maches white user and the data
-        if(goal.user.toString() !== user.id){
+        if(goal.user.toString() !== req.user.id){
             res.status(401)
             throw new Error ('User not authorized')
         }
@@ -85,14 +86,14 @@ const deleteGoal =asyncHandler(  async (req, res) => {
     }
 
     // ---------- hnaya bach meli tb4i dir update f goal t7add bach mtbdlch f goal ta3 user a5or 
-        const user = await User.findById(req.user.id)
+        // const user = await User.findById(req.user.id)
         // check for user
-        if (!user){
+        if (!req.user){
             res.status(401)
             throw new Error ('User not found')
         }
         // make sure the maches white user and the data
-        if(goal.user.toString() !== user.id){
+        if(goal.user.toString() !== req.user.id){
             res.status(401)
             throw new Error ('User not authorized')
         }

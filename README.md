@@ -210,6 +210,75 @@ npm start
     - ga3 dakchi kayne f Register page b les cammante line ou ga3 lifihom ----1--- homa li daro 7ta daba
     - mn lora hadchi 4atbda 5dma b redux
 
+
+    ## run the server and the front in single cammnte
+    - 9bl mn bda f part redux nrod l project itrana mn cammnte wa7da kt5dmn front ou server f da9a
+    - bach ndiro hachi 4n5dmo b package smito concurrently , nmchi l project ou n installi hadi => npm i -D concurrently
+    - mn loraha nchouf wach t instala concurrently f package.js ou 3ad nzid had star f script part =>     "dev": "concurrently \"npm run server\" \"npm run client\""
+    - dik dev hia smia li run rani biha server like daba npm run dev
+
+
     ## Redux part
     - push  that part from the project in git
-    -       npm
+    - bach nbda f part REdux nmchi l folder features 4aykon 5awi ndir fih auth folder fih authSlice.js ou authservce.js ou 3ad kayne store.js li 4n5dm bih 7at howa
+    - b5tisar l3ala9a bin had les tree fil howa authService.js kihdar oula kisayft req m3a lback ,authSlice.js kinadi 3la authService.js ou iya5od meno rep store.js ki5azn dak rep ou btlata script li fihom makitbdlch mafhamtoch kaml mais makitbdlch
+
+    - authservce.js fil ki5dm http thinks ya3ni howa li cihdar m3a lback ou bach n5dmo bih ndiro had lcammente bach n 5dmo b les alerts ta3 err orsecsess
+    - li hia hadi => npm i axios react-toastify
+
+    - bach ndir link mabin les api ta3 front ou lback b axios oula fetch kndir f package.js ta3 front had star liki3awn axios fin isayft les api f talit ligne  =>   "proxy": "http://localhost:9000",
+
+    -----
+    - Tolkit 3ndha mm peincip ta3 redux , kit5szno les state f store li kitaffichawe oula kitchanjawe f ui 3n tari9 des subscribe like selectore ,... in ui 3ndk des botton kidiro wa7d Dispatch ou kaydiro des action ( les fct ta3 crud) ou had action kt3ayt l Reducers li bdawro ki changer f state li f store
+
+    - awal 7aja ncriw store ou n3ayto 3lih f page ta3 routes 
+    - Action + Reducers kikono f wa7d Slice kola part 5assha tkon 3ndha slice bo7dha , user 3ndhom slice ta3home product slice ta3hom name b like userSlice
+    - mn b3d mn 7oto slice, store ou n3ayto 3lih f app.js , nbda f recupiriw the values b useSelector
+    - ya n7otoha f fil bo7dha 3ad n3ayto 3liha f lpage li m7taj data fiha oula 4a ndirha nichan f dok l page 
+
+    ---- Hook Up Register Form
+    - had lpart fiha import ta3 useSelector, useDispatch f register.jsx 
+    - // useSelector bach using the states like user, isloding, isErr  ...
+    - // useDispatch bach using for despatsh the fcts like register , async , reset ...
+    - import { useNavigate } from "react-router-dom"
+    - import { toast } from "react-toastify"
+
+    - daba f App.js :
+        - import { ToastContainer } from "react-toastify";
+        - import 'react-toastify/ReactToastify.css'
+        - n3ayt 3la  <ToastContainer /> t7t Router
+
+    -- f register import regester and reset fct mn slice
+        - import { register, reset } from "../features/auth/authSlice"
+        - kn7ot syntax ta3 useNavigate, useDispatch , useSelector f l fct 
+        - lcode ra howa li f register ou hola li wst had l3ayba ------------ 2 --------------
+        - ou kqyne bklqn ta3 isloqding 4ancriwe lihe component fil ta3o spinner.jsx
+
+
+        - ayoubelglile@gmail.com  - ayoubelglile - ayoubelglile
+
+        - El-Glile@gmail.com - El-Glile - register
+
+        ### dashbord part
+        - daba l5dma 3la dashbord nsiro useeffect fiha check lamakanch m connecter user idih l login ou usenavigate , ou useselector
+        - cncreate goalslice and goalservice n7ot part1 and 2 , n exporter slice ou n#ayt 3Liha f store ,
+            mn loraha nmchi l dashbord n9adha bach tjib data b ou wa7d  file f component smito goalForm.jsx ndir fih forme add goal,
+            nrja3 l dashbord n3ayt 3la smit l user m3a welcome ou 3la GoalForm ,
+            had goal form 4an9ad syntaxe ta3 formulaire kthdar m3a slice les part 1/2/3 ou 4
+            nrja3 daba l slice and Goalservice n create the CREATEGOAL syntaxe part3
+            nm loraha n7oto les case lihoma ExtraReducers part4
+            26:17 ????
+            mn loraha create get user goal f slice and goealservices part5 ou les cases f part6
+            daba n5aliwe add goal 5dama f l front , nmchi l part ta3 dashbord   create wa7d dispatch bach n3ayt 3liha f l if ta3 useEffect ou
+            ou 4nzido useSelector ta3 les casses isErr, isLoading etc....
+            4an9ado des if 3la 7sab les fct ta3 les casses li jayin mn goalsSlice
+            4anzido f la5r spinner
+            ga3 had les syntaxe 4aykono f ra9m --------2------------
+
+        - part ta3 affichage the Goals f lfront deja slice ta3ha m9ada ya3ni 4n9ado 4a l affichage 
+            4ndiro create compenent GoalItem.jsx li 4aykon fiha map ta3 les goals kolhom b -------1------- 4n9ad chkl ta3 design mn b3d btn ta3 delete 
+            li 4tkon 7ta date 4tkon fiha icon , onchange and usedispatch kolchi li f syntaxe f -------2- delete ------
+            ou bach n5admoha n9ado slice m3aha les cases ou goalservices kamlin 4aykono b had tag   part7-------- delete ------
+
+
+    ## preparer for deployement

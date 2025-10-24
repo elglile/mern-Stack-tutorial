@@ -1,5 +1,15 @@
-import { useEffect, useState } from "react"
+import React, {useEffect, useState } from "react";
+// useSelector bach using the states like user, isloding, isErr  ...
+// useDispatch bach using for despatsh the fcts like register , async , reset ...
+import { useSelector, useDispatch } from "react-redux"
+// 
+import { useNavigate } from "react-router-dom"
+
+import { toast } from "react-toastify"
 import { Link } from "react-router-dom"
+import { register, reset } from "../features/auth/authSlice"
+import Spinner from "../components/Spinner";
+
 
 export default function Register() {
 
@@ -11,6 +21,31 @@ export default function Register() {
     password: '',
     password_c: ''
   })
+
+  // hna kanjbd values mn formData bach nsta3mlhom t7t
+  const { username, email, password, password_c } = formData
+
+  // ----------- 2 ------------------------------------------------------
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const {user, isLoading, isError, isSuccess, message } = useSelector(
+    (state)=> state.auth)
+//------------------------------------------------------------------------
+
+useEffect(() => {
+  if (isError) {
+    toast.error(message)
+  }
+
+  if (isSuccess || user) {
+    navigate('/')
+  }
+
+  // reset always comes last and outside the conditions
+  // but must not block navigation
+  dispatch(reset())
+}, [user, isError, isSuccess, message, navigate, dispatch])
 
   // hadi fct onchange kat5dm mlli user yktb chi 7aja f chi input
   // katbdl dik l9ima f formData 3la 7ssab name ta3 dak input
@@ -26,29 +61,26 @@ export default function Register() {
   const onSubmit = (e)=>{
       //----1---
       e.preventDefault() // had star kimna3 lpage matrefrechach mlli ydir submit
-
+      // ------- 2 ----------------------------------------------------------------------------------
       // hna kanchof wach password w confirm password b7al b7al
-      if (formData.password !== formData.password_c) {
-        alert("Passwords do not match")
-        return
+      if (password !== password_c) {
+        toast.error("Passwords do not match")
       }
-
-      // had alert katbayn lina data li da5l user f form
-      alert(
-        `Form data:\nUsername: ${formData.username}\nEmail: ${formData.email}`
-      )
-
-      // hna kanfargho les input mn b3d submit
-      // setFormData({
-      //   username: '',
-      //   email: '',
-      //   password: '',
-      //   password_c: ''
-      // })
+      else{
+            const userData = {
+              username, 
+              email,
+              password
+            }
+            dispatch(register(userData))
+      }
   }
+  if (isLoading) {
+    return <Spinner />
+  }
+//------------------------------------------------------------------------
 
-  // hna kanjbd values mn formData bach nsta3mlhom t7t
-  const { username, email, password, password_c } = formData
+
 
   return (
     <>

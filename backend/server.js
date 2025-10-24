@@ -1,3 +1,4 @@
+const path = require('path')
 // ki importer express mn module
 const express = require("express")
 // ki importer dotenv باش نستعمل variables mn .env
@@ -28,9 +29,23 @@ app.use(express.urlencoded({extended : false}))
 app.use('/api/goals',require('./routes/goeal'))
 app.use('/api/users',require('./routes/user'))
 
+// serve frontend f production mode
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, '../frontend/build')))
+    app.use((req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'))
+})
+
+}else{
+    app.get('/', (req, res) => {
+        res.send('API is running....')}
+    )
+}
+
+
 app.use(errorHandler)
 
 // ki nshilo server على _PORT
 app.listen(_PORT, () => {
     console.log(`start server whit ${_PORT}`)
-})
+}) 
